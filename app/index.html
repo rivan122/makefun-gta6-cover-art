@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Shores — Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <p class="brand">NEON SHORES <span>Cover Studio</span></p>
+  <p class="steps">Photo &rarr; Layout &rarr; Caption &rarr; Export. Your photos never leave this machine.</p>
+</header>
+<main class="app">
+  <aside class="controls">
+    <section class="control-block">
+      <h2>1 · Photo</h2>
+      <label class="file-pick">Add your photos
+        <input id="photo-file" type="file" accept="image/*" multiple>
+      </label>
+      <p class="note">…or drop them on the cover. Then click a photo to fill the selected panel.</p>
+      <div id="samples" class="thumb-row" aria-label="Sample photos"></div>
+      <div id="uploads" class="thumb-row" aria-label="Your photos"></div>
+      <h3>Panels</h3>
+      <div id="panel-strip" class="panel-strip"></div>
+      <label class="slider-row">Zoom the selected panel
+        <input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+      </label>
+      <div class="button-row">
+        <button id="fill-all" type="button">One photo in every panel</button>
+        <button id="reset-framing" type="button">Reset framing</button>
+      </div>
+      <p class="note">Drag a panel on the cover to move its photo; scroll to zoom.</p>
+    </section>
+    <section class="control-block">
+      <h2>2 · Layout &amp; grade</h2>
+      <div id="layouts" class="layout-row"></div>
+      <div id="grades" class="grade-row"></div>
+      <label class="check-row"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label class="check-row"><input id="halftone" type="checkbox"> Halftone print finish</label>
+    </section>
+    <section class="control-block">
+      <h2>3 · Caption</h2>
+      <label>Words <input id="caption" type="text" maxlength="40" value="NEON SHORES"></label>
+      <label class="slider-row">Size
+        <input id="caption-size" type="range" min="0.5" max="1.6" step="0.05" value="1">
+      </label>
+      <div class="button-row">
+        <label>Fill <input id="caption-color" type="color" value="#ffffff"></label>
+        <label class="check-row"><input id="caption-stroke" type="checkbox" checked> Dark outline</label>
+        <label>Place
+          <select id="caption-pos">
+            <option value="bottom" selected>Bottom</option>
+            <option value="top">Top</option>
+          </select>
+        </label>
+      </div>
+    </section>
+    <section class="control-block">
+      <h2>4 · Export</h2>
+      <div class="button-row" role="radiogroup" aria-label="Export size">
+        <label class="check-row"><input type="radio" name="size" value="1080x1080" checked> Square 1080 × 1080</label>
+        <label class="check-row"><input type="radio" name="size" value="1080x1350"> Portrait 1080 × 1350</label>
+        <label class="check-row"><input type="radio" name="size" value="1920x1080"> Wide 1920 × 1080</label>
+      </div>
+      <button id="export" type="button" class="export-button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+  <section class="stage" id="stage-wrap">
+    <canvas id="stage" width="1080" height="1080" aria-label="Your cover, live preview"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
